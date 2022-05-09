@@ -1,0 +1,89 @@
+url = "/api/v1/book/:slug"
+title = "Book Detail Api"
+
+[bookDetail]
+slug = "{{ :slug }}"
+==
+
+{% set chapters = collect() %}
+{% for chapter in book.chapters %}
+    {% set pages = collect() %}
+    {% for page in chapter.pages %}
+        {% do pages.push(page.path) %}
+    {% endfor %}
+    {% do chapters.push({
+        id: chapter.id,
+        number: chapter.number,
+        slug: chapter.slug,
+        status: chapter.status,
+        title: chapter.title,
+        sub_title: chapter.description,
+        pages_count: chapter.pages_count,
+        pages: pages,
+    }) %}
+{% endfor %}
+
+{% do response({
+    id: book.id,
+    title: book.title,
+    slug: book.slug,
+    desc: book.description,
+    rating: book.rating,
+    status: book.status,
+    cover: book.cover.path,
+    author: book.author.name,
+    author_id: book.author.id,
+    author_slug: book.author.slug,
+    artist: book.artist.name,
+    artist_id: book.artist.id,
+    artist_slug: book.artist.slug,
+    chapters: chapters,
+}) %}
+
+{#
+ {
+    id: 1,
+    title: 'Dark Knights of Steel (2021)',
+    desc: 'ကျူးကျော်သူသည် ....',
+    rating: 3.5,
+    status: 'Completed',
+    image: 'https://www.dccomics.com/image.jpg',
+    aurthor: 'Geoff Johns',
+    artist: 'Gary Frank',
+    chapters: [
+      {
+        id: 1,
+        title: 'Chapter 1',
+        sub_title: 'First Contact',
+        status: false,
+        cover_image: 'https://www.dccomics.com/image.jpg',
+        image: [
+          'https://www.dccomics.com/image.jpg',
+          'https://www.dccomics.com/image.jpg',
+        ],
+      },
+      {
+        id: 2,
+        title: 'Chapter 2',
+        sub_title: 'The First Encounter',
+        status: 'New',
+        cover_image: 'https://www.dccomics.com/image.jpg',
+        image: [
+          'https://www.dccomics.com/image.jpg',
+          'https://www.dccomics.com/image.jpg',
+        ],
+      },
+      {
+        id: 3,
+        title: 'Chapter 3',
+        sub_title: 'Greetings',
+        status: 'New',
+        cover_image: 'https://www.dccomics.com/image.jpg',
+        image: [
+          'https://www.dccomics.com/image.jpg',
+          'https://www.dccomics.com/image.jpg',
+        ],
+      },
+    ]
+  }
+#}

@@ -1,5 +1,6 @@
 <?php namespace Thixpin\Book\Components;
 
+use Thixpin\Book\Models\Book;
 use Cms\Classes\ComponentBase;
 
 /**
@@ -18,5 +19,15 @@ class BookList extends ComponentBase
     public function defineProperties()
     {
         return [];
+    }
+
+    public function onRun()
+    {
+        $this->page['books'] = $this->listBooks();
+    }
+
+    protected function listBooks()
+    {
+        return Book::all();
     }
 }

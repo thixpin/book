@@ -1,0 +1,35 @@
+url = "/api/v1/books-list"
+title = "BooksList Api"
+
+[bookList]
+==
+{% set result = collect() %}
+
+{% for book in books %}
+    {# {% set categories = collect() %}
+    {% for cat in book.categories %}
+        {% do categories.push({
+            id: cat.id,
+            name: cat.name,
+            slug: cat.slug,
+        }) %}
+    {% endfor %} #}
+    {% set url = '/api/v1/book/' ~ book.slug %}
+    {% do result.push({
+        id: book.id,
+        title: book.title,
+        slug: book.slug,
+        api_url: url,
+        desc: book.description,
+        cover: book.cover.path,
+        author: book.author.name,
+        author_id: book.author.id,
+        author_slug: book.author.slug,
+        artist: book.artist.name,
+        artist_id: book.artist.id,
+        artist_slug: book.artist.slug,
+
+    }) %}
+{% endfor %}
+
+{% do response(result) %}

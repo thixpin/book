@@ -1,0 +1,15 @@
+1.0.1: First version of Book plugin
+1.0.2: 
+  - Create required tables
+  - create_artists_table.php
+  - create_authors_table.php
+  - create_books_table.php
+  - create_categories_table.php
+  - create_chapter_redings_table.php
+  - create_chapters_table.php
+  - create_comments_table.php
+  - create_ratings_table.php
+  - create_tags_table.php
+1.0.3:
+  - Seed Simple database
+  - seed_all_tables.php

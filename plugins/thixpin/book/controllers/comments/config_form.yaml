@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Comment
+
+# Model Form Field configuration
+form: $/thixpin/book/models/comment/fields.yaml
+
+# Model Class name
+modelClass: Thixpin\Book\Models\Comment
+
+# Default redirect location
+defaultRedirect: thixpin/book/comments
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: thixpin/book/comments/update/:id
+    redirectClose: thixpin/book/comments
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: thixpin/book/comments
+    redirectClose: thixpin/book/comments
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

@@ -1,0 +1,100 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+# tabs:
+#     fields:
+    id:
+        label: ID
+        disabled: true
+        hidden: true
+
+    title:
+        label: Title
+        type: text
+        #tab: Meta
+        span: left
+
+    slug:
+        label: Slug
+        placeholder: url-slug
+        preset: 
+            field: title
+            separator: -
+            type: slug
+        #tab: Meta
+        span: right
+
+    author:
+        label: Author
+        type: relation
+        relation: author
+        nameFrom: name
+        #tab: Meta
+        span: left
+    artist:
+        label: Artist
+        type: relation
+        relation: artist
+        nameFrom: name
+        #tab: Meta
+        span: right
+
+    categories:
+        label: Category
+        # commentAbove: Specify which categories this book should belong to.
+        type: taglist
+        relation: categories
+        #tab: Meta
+        span: left
+
+    tags:
+        label: Tags
+        # commentAbove: Specify which tags this book should belong to.
+        type: taglist
+        relation: tags
+        #tab: Meta
+        span: right
+
+    description:
+        label: Description
+        type: richeditor
+        size: small
+        #tab: Meta
+        span: left
+
+
+    cover:
+        label: CoverPhoto
+        type: fileupload  
+        mode: image
+        imageWidth: 100
+        imageHeight: 200
+        #tab: Meta
+        span: right
+
+    
+    setion:
+        type: section
+    
+
+    chapters:
+        label: Chapters
+        type: partial
+        path: ~/plugins/thixpin/book/controllers/books/_chapters.htm
+        #tab: Chapters
+        span: left
+
+
+    comments:
+        label: Comments
+        type: partial
+        #tab: Comment
+        path: ~/plugins/thixpin/book/controllers/books/_comments.htm
+        span: right
+   
+
+
+

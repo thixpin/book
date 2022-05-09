@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Book
+
+# Model Form Field configuration
+form: $/thixpin/book/models/book/fields.yaml
+
+# Model Class name
+modelClass: Thixpin\Book\Models\Book
+
+# Default redirect location
+defaultRedirect: thixpin/book/books
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: thixpin/book/books/update/:id
+    redirectClose: thixpin/book/books
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: thixpin/book/books
+    redirectClose: thixpin/book/books
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

@@ -1,0 +1,24 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: ID
+        disabled: true
+        hidden: true
+
+    name:
+        label: Author Name
+        type: text
+        span: left
+
+    slug:
+        label: Slug
+        placeholder: url-slug
+        preset: 
+            field: name
+            separator: -
+            type: slug
+        span: right
+

@@ -1,0 +1,17 @@
+chapters:
+    label: Chapters
+    manage:
+        form: $/thixpin/book/models/chapter/fields.yaml
+        list: $/thixpin/book/models/chapter/columns.yaml
+    view:
+        list: $/thixpin/book/models/chapter/columns.yaml
+        toolbarButtons: create|delete
+
+comments:
+  label: Comments
+  manage:
+      form: $/thixpin/book/models/comment/relation_fields.yaml
+      list: $/thixpin/book/models/comment/relation_columns.yaml
+  view:
+      list: $/thixpin/book/models/comment/relation_columns.yaml
+      toolbarButtons: create|delete

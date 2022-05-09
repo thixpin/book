@@ -1,0 +1,38 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: ID
+        disabled: true
+        hidden: true
+
+    
+    name:
+        label: Name
+        type: text
+        span: left
+
+    book:
+        label: Book
+        type: relation
+        relation: book
+        nameFrom: title
+        span: right
+        # disabled: true
+
+    email:
+        label: Email
+        type: text
+        span: left
+
+    is_published:
+        label: Published
+        type: switch
+        span: right
+
+    comment:
+        label: Comment
+        type: textarea
+        span: left

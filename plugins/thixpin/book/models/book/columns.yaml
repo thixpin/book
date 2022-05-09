@@ -1,0 +1,27 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+    
+    title:
+        label: Title
+        searchable: true
+        sortable: true
+
+    author:
+        label: Author
+        relation: author
+        select: name
+
+    artist:
+        label: Artist
+        relation: artist
+        select: name
+
+    cover:
+        label: Cover
+        type: image

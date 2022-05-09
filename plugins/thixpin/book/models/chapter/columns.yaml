@@ -1,0 +1,26 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+        hidden: true
+
+    number:
+        label: Number
+        searchable: false
+        sortable: true
+
+    title:
+        label: Title
+        searchable: true
+        sortable: true
+
+    pages_count:
+        label: Number of Pages
+        type: number
+        searchable: false
+        sortable: true
+    

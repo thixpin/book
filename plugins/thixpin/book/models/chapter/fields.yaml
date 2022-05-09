@@ -1,0 +1,45 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: ID
+        disabled: true
+        hidden: true
+
+
+    title:
+        label: Title
+        type: text
+        span: left
+
+    slug:
+        label: Slug
+        placeholder: url-slug
+        preset: 
+            field: title
+            separator: -
+            type: slug
+        span: right
+
+    
+
+    number:
+        label: Chapter Number
+        type: number
+        span: left
+
+    pages:
+        label: Pages
+        type: fileupload
+        mode: image
+        span: right
+
+    cover:
+        label: CoverPhoto
+        type: fileupload  
+        mode: image
+        imageWidth: 100
+        imageHeight: 200
+        span: left

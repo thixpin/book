@@ -14,12 +14,12 @@ title = "BooksList Api"
             slug: cat.slug,
         }) %}
     {% endfor %} #}
-    {% set url = '/api/v1/book/' ~ book.slug %}
+
     {% do result.push({
         id: book.id,
         title: book.title,
         slug: book.slug,
-        api_url: url,
+        api_url: 'api/v1/book'|page({ slug: book.slug}),
         desc: book.description,
         cover: book.cover.path,
         author: book.author.name,

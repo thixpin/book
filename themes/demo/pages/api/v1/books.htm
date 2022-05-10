@@ -1,4 +1,4 @@
-url = "/api/v1/books-list"
+url = "/api/v1/books/:listBy/:slug?"
 title = "BooksList Api"
 
 [bookList]
@@ -6,14 +6,25 @@ title = "BooksList Api"
 {% set result = collect() %}
 
 {% for book in books %}
-    {# {% set categories = collect() %}
+    {% set categories = collect() %}
     {% for cat in book.categories %}
         {% do categories.push({
             id: cat.id,
             name: cat.name,
             slug: cat.slug,
+            api_url: 'api/v1/books'|page({ listBy: 'category', slug: cat.slug}) ~ '?page=1&perPage=' ~ books.perPage(),
         }) %}
-    {% endfor %} #}
+    {% endfor %}
+
+    {% set tags = collect() %}
+    {% for tag in book.tags %}
+        {% do tags.push({
+            id: tag.id,
+            name: tag.name,
+            slug: tag.slug,
+            api_url: 'api/v1/books'|page({ listBy: 'tag', slug: tag.slug}) ~ '?page=1&perPage=' ~ books.perPage(),
+        }) %}
+    {% endfor %}
 
     {% do result.push({
         id: book.id,
@@ -25,11 +36,25 @@ title = "BooksList Api"
         author: book.author.name,
         author_id: book.author.id,
         author_slug: book.author.slug,
+        author_api_url: 'api/v1/books'|page({ listBy: 'author', slug: book.author.slug}) ~ '?page=1&perPage=' ~ books.perPage(),
         artist: book.artist.name,
         artist_id: book.artist.id,
         artist_slug: book.artist.slug,
+        artist_api_url: 'api/v1/books'|page({ listBy: 'artist', slug: book.artist.slug}) ~ '?page=1&perPage=' ~ books.perPage(),
+        categories: categories,
+        tags: tags,
 
     }) %}
 {% endfor %}
 
-{% do response(result) %}
+
+
+
+{% do response({
+    path: books.path(),
+    per_page: books.perPage(),
+    page: books.currentPage(),
+    last_page: books.lastPage(),
+    total: books.total(),
+    data: result,
+}) %}

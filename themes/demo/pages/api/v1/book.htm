@@ -23,6 +23,26 @@ slug = "{{ :slug }}"
     }) %}
 {% endfor %}
 
+{% set categories = collect() %}
+{% for cat in book.categories %}
+    {% do categories.push({
+        id: cat.id,
+        name: cat.name,
+        slug: cat.slug,
+        api_url: 'api/v1/books'|page({ listBy: 'category', slug: cat.slug}),
+    }) %}
+{% endfor %}
+
+{% set tags = collect() %}
+{% for tag in book.tags %}
+    {% do tags.push({
+        id: tag.id,
+        name: tag.name,
+        slug: tag.slug,
+        api_url: 'api/v1/books'|page({ listBy: 'tag', slug: tag.slug}),
+    }) %}
+{% endfor %}
+
 {% do response({
     id: book.id,
     title: book.title,
@@ -38,6 +58,8 @@ slug = "{{ :slug }}"
     artist_id: book.artist.id,
     artist_slug: book.artist.slug,
     chapters: chapters,
+    categories: categories,
+    tags: tags,
 }) %}
 
 {#

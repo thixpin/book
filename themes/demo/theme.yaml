@@ -3,3 +3,56 @@ description: 'Demo October CMS theme. Demonstrates the basic concepts of the fro
 author: October CMS
 homepage: 'http://octobercms.com'
 code: ''
+
+form: 
+  tabs:
+    stretch: true
+    defaultTab: Theme
+    lazy:
+        - Theme
+    icons:
+        Theme: icon-cogs
+        Social: icon-comments-o
+        Info: icon-info
+        Gallary: icon-photo
+        Address: icon-map-marker
+        AboutTheme: icon-info-circle
+
+    
+
+    fields:
+      site_name:
+        label: Site Name
+        type: text
+        placeholder: 'October CMS'
+        default: 'October CMS'
+        tab: Theme
+        icon: icon-cogs
+        span: left
+
+      site_logo:
+        label: Site Logo
+        comment: The website logo as it should appear on the front-end
+        type: fileupload
+        mode: image
+        imageHeight: 128
+        imageWidth: 128
+        span: right
+
+      site_description:
+        label: Site Description
+        type: textarea
+        placeholder: 'OctoberCMS is a content management system for the web'
+        default: 'OctoberCMS is a content management system for the web'
+        tab: Theme
+        icon: icon-cogs
+        span: left
+
+      site_banner:
+        label: Site Banner
+        comment: The website banner as it should appear on the front-end
+        type: fileupload
+        mode: image
+        imageHeight: 400
+        imageWidth: 1200
+        span: right

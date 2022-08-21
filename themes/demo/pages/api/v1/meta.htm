@@ -1,0 +1,17 @@
+url = "/api/v1/meta"
+title = "Meta Data"
+
+==
+
+
+{% do response({ 
+    success: true,
+    message: 'Meta Data',
+    data: {
+        site_name: this.theme.site_name,
+        description: this.theme.site_description,
+        logo:  this.theme.site_logo.path,
+        banner: this.theme.site_banner.path,
+    }
+}) %}
+  

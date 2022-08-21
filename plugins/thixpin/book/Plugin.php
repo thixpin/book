@@ -53,6 +53,7 @@ class Plugin extends PluginBase
         return [
             'Thixpin\Book\Components\BookList' => 'bookList',
             'Thixpin\Book\Components\BookDetail' => 'bookDetail',
+            'Thixpin\Book\Components\Comments' => 'bookComments',
         ];
     }
 

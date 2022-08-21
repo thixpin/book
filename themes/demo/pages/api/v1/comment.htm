@@ -1,0 +1,34 @@
+url = "/api/v1/comments"
+title = "Comments"
+
+[bookComments]
+
+==
+
+{% if this.request.method == 'POST' %}
+  {% set result = ajaxHandler('onSubmit') %}
+  {% if result.data.error %}
+    {% do response({ 
+      success: false,
+      message: result.data.error,
+      data: {},
+    }, 400
+    ) %}
+  {% else %}
+      {% do response({ 
+        success: true,
+        message: 'Comment has been added',
+        data: result.data,
+      }) %}
+  {% endif %}
+{% else %}
+  {% do response(
+    {
+      message: 'Comment api',
+      data: {
+        'id': 'get'
+      },
+    },
+    200,
+  ) %}
+{% endif %}

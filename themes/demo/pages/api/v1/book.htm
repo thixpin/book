@@ -43,6 +43,42 @@ slug = "{{ :slug }}"
     }) %}
 {% endfor %}
 
+{% set comments = collect() %}
+{% for comment in book.comments %}
+    {% if comment.is_published  %}
+    {% else %}
+        {% do comments.push({
+            id: comment.id,
+            name: comment.name,
+            email: comment.email,
+            comment: comment.comment,
+            created_at: comment.created_at,
+        }) %}
+    {% endif %}
+{% endfor %}
+
+
+{% set recommendedBooks = collect() %}
+{% for recommended in relatedBooks %}
+    {% do recommendedBooks.push({
+        id: recommended.id,
+        title: recommended.title,
+        slug: recommended.slug,
+        desc: recommended.description,
+        cover: recommended.cover.path,
+        author: recommended.author.name,
+        author_id: recommended.author.id,
+        author_slug: recommended.author.slug,
+        author_api_url: 'api/v1/books'|page({ listBy: 'author', slug: recommended.author.slug}),
+        artist: recommended.artist.name,
+        artist_id: recommended.artist.id,
+        artist_slug: recommended.artist.slug,
+        artist_api_url: 'api/v1/books'|page({ listBy: 'artist', slug: recommended.artist.slug}),
+        categories: categories,
+        tags: tags,
+    }) %}
+{% endfor %}
+
 {% do response({
     id: book.id,
     title: book.title,
@@ -60,6 +96,8 @@ slug = "{{ :slug }}"
     chapters: chapters,
     categories: categories,
     tags: tags,
+    comments: comments,
+    recommended_books: recommendedBooks,
 }) %}
 
 {#
